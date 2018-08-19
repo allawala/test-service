@@ -3,7 +3,7 @@ package allawala.demo.user.route
 import akka.http.scaladsl.server.Route
 import allawala.chassis.http.route.{HasRoute, RouteSupport, ValidationDirective}
 import allawala.chassis.i18n.service.I18nService
-import allawala.demo.user.model.Login
+import allawala.demo.user.model.Registration
 import allawala.demo.user.service.UserService
 import allawala.demo.user.validation.UserValidator
 import javax.inject.Inject
@@ -19,9 +19,9 @@ class UserPublicRoute @Inject() (
 
   def register: Route = path("users" / "register") {
     post {
-      model(as[Login])(userValidator.validateLogin) { validatedLogin =>
+      model(as[Registration])(userValidator.validateRegistration) { validated =>
         onCompleteEither {
-          userService.register(validatedLogin)
+          userService.register(validated)
         }
       }
     }

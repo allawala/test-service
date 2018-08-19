@@ -1,8 +1,9 @@
 package allawala.demo.user.service
 
 import allawala.ResponseFE
-import allawala.demo.user.model.{Login, User}
+import allawala.demo.user.model.{Registration, User}
 
 trait UserService {
-  def register(login: Login): ResponseFE[User]
+  def register(registration: Registration): ResponseFE[User]
+  def getUser(uuid: String): ResponseFE[Option[User]]
 }

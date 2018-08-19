@@ -26,6 +26,7 @@ val mockitoVersion = "2.8.47"
 val scalatestVersion = "3.0.1"
 val serviceChassisVersion = "1.0.3-SNAPSHOT"
 val macroParadiseVersion = "2.1.0"
+val guavaVersion = "20.0"
 
 addCompilerPlugin("org.scalamacros" % "paradise" % macroParadiseVersion cross CrossVersion.full)
 
@@ -34,6 +35,7 @@ libraryDependencies ++= {
 
   Seq(
     "allawala" %% "service-chassis" % serviceChassisVersion,
+    "com.google.guava" % "guava" % guavaVersion,
 
     // Test Dependencies
     "com.typesafe.akka" %% "akka-http-testkit" % akkaHttpVersion % "test",
