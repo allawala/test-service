@@ -1,4 +1,4 @@
-package allawala.test.core.module
+package allawala.demo.core.module
 
 import allawala.chassis.core.module.ChassisModule
 
