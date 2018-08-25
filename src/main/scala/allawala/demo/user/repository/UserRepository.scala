@@ -8,4 +8,5 @@ trait UserRepository {
   def delete(uuid: String): UserEntity
   def getByEmailOpt(email: String): Option[UserEntity]
   def getOpt(uuid: String): Option[UserEntity]
+  def clear(): Unit
 }
