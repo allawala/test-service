@@ -33,6 +33,8 @@ class UserRepositoryImpl extends UserRepository {
     }
   }
 
+  override def getByEmail(email: String): UserEntity = users(email)
+
   override def getByEmailOpt(email: String): Option[UserEntity] = users.get(email)
 
   override def getOpt(uuid: String): Option[UserEntity] = users.values.find(_.uuid == uuid)

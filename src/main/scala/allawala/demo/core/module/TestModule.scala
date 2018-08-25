@@ -10,6 +10,10 @@ class TestModule extends ChassisModule {
     super.configure()
 
     install(new UserModule)
+  }
+
+  // Overwrite the default auth module
+  override protected def bindAuthModule(): Unit = {
     install(new TestAuthModule)
   }
 }

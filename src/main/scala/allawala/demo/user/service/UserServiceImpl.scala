@@ -44,4 +44,14 @@ class UserServiceImpl @Inject()(userTranslator: UserTranslator, userRepository: 
   override def getUser(uuid: String): ResponseFE[Option[User]] = {
     Future.successful(Right(userRepository.getOpt(uuid).map(userTranslator.toModel)))
   }
+
+  override def login(email: String): ResponseFE[User] = {
+    // Do things like reset failed login attempts
+    Future.successful(Right(userTranslator.toModel(userRepository.getByEmail(email))))
+  }
+
+  override def loginFailed(email: String): ResponseFE[Unit] = {
+    // Do things like keep track of consecutive failed login attempts, lock the user after the threshold is met etc
+    Future.successful(Right(()))
+  }
 }

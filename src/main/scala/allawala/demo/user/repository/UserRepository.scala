@@ -6,6 +6,7 @@ trait UserRepository {
   def create(userEntity: UserEntity): UserEntity
   def update(userEntity: UserEntity): UserEntity
   def delete(uuid: String): UserEntity
+  def getByEmail(email: String): UserEntity
   def getByEmailOpt(email: String): Option[UserEntity]
   def getOpt(uuid: String): Option[UserEntity]
   def clear(): Unit
