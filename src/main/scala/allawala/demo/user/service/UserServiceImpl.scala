@@ -11,8 +11,7 @@ import javax.inject.{Inject, Named}
 import scala.concurrent.{ExecutionContext, Future}
 
 class UserServiceImpl @Inject()(userTranslator: UserTranslator, userRepository: UserRepository)
-                               (@Named("blocking-fixed-pool-dispatcher") implicit val ec: ExecutionContext
-                               ) extends BaseLifecycleAware with UserService {
+                               (@Named("blocking-fixed-pool-dispatcher") implicit val ec: ExecutionContext) extends BaseLifecycleAware with UserService {
   override def preStart(): Future[Either[InitializationException, Unit]] = {
     // Create a test user
     val defaultRegistration = Registration("test@test.com", "password123", "test", "user")

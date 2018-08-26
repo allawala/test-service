@@ -3,7 +3,7 @@ package allawala.demo.auth.module
 import allawala.chassis.auth.module.AuthModule
 import allawala.chassis.auth.service.TokenStorageService
 import allawala.chassis.auth.shiro.module.ShiroAuthModule
-import allawala.demo.auth.realm.InMemoryUserNamePasswordRealm
+import allawala.demo.auth.realm.{InMemoryUserNamePasswordRealm, JWTAuthRealm}
 import allawala.demo.auth.service.{EncryptionService, EncryptionServiceImpl, TestCredentialsMatcher}
 import allawala.demo.user.service.UserTokenServiceImpl
 import com.google.inject.multibindings.Multibinder
@@ -30,7 +30,7 @@ class TestAuthModule extends AuthModule {
 
       override protected def bindRealms(): Unit = {
         val multibinder = Multibinder.newSetBinder(binder, classOf[Realm])
-//        multibinder.addBinding().to(classOf[JWTAuthorizingRealm])
+        multibinder.addBinding().to(classOf[JWTAuthRealm])
         multibinder.addBinding().to(classOf[InMemoryUserNamePasswordRealm])
       }
     })

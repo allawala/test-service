@@ -13,3 +13,4 @@ validation.error.length.min=length should be least at least {0} characters
 validation.error.length.max=length should be at most {0} characters
 validation.error.length=length should be between {0} and {1} characters
 validation.error.email=invalid email
+refresh.token.not.found=refresh token could not be found for the selector

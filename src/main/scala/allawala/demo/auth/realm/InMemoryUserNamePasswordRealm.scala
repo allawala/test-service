@@ -15,9 +15,14 @@ class InMemoryUserNamePasswordRealm @Inject()(matcher: TestCredentialsMatcher, u
 
     userRepository.getByEmailOpt(token.getUsername) match {
       case Some(userEntity) =>
+        // You may want to check if the account is active etc
         val info = new SimpleAuthenticationInfo(userEntity.email, userEntity.encryptedPassword.toCharArray, getName)
         info.setCredentialsSalt(ByteSource.Util.bytes(userEntity.salt))
         info
+      /*
+       Since we are in Shiro realm outside our futures and eithers, we throw the Shiro AuthenticationException here as normal which will be converted to the Domain specific
+       AuthenticationException and converted to the standard error response payload
+      */
       case None => throw new AuthenticationException("user not found")
     }
   }

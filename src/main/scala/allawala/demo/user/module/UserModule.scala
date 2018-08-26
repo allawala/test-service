@@ -1,6 +1,6 @@
 package allawala.demo.user.module
 
-import allawala.demo.user.repository.{UserRepository, UserRepositoryImpl}
+import allawala.demo.user.repository.{UserRepository, UserRepositoryImpl, UserTokenRepository, UserTokenRepositoryImpl}
 import allawala.demo.user.route.{UserPublicRoute, UserRoute}
 import allawala.demo.user.service.{UserService, UserServiceImpl}
 import allawala.demo.user.translation.{UserTranslator, UserTranslatorImpl}
@@ -16,5 +16,6 @@ class UserModule extends AbstractModule with ScalaModule {
     bind[UserValidator].to[UserValidatorImpl].asEagerSingleton()
     bind[UserTranslator].to[UserTranslatorImpl].asEagerSingleton()
     bind[UserRepository].to[UserRepositoryImpl].asEagerSingleton()
+    bind[UserTokenRepository].to[UserTokenRepositoryImpl].asEagerSingleton()
   }
 }
