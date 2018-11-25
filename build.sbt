@@ -21,10 +21,10 @@ scalacOptions ++= Seq(
   "-language:higherKinds"
 )
 
-val akkaHttpVersion = "10.0.9"
+val akkaHttpVersion = "10.1.5"
 val mockitoVersion = "2.8.47"
 val scalatestVersion = "3.0.1"
-val serviceChassisVersion = "1.0.3-SNAPSHOT"
+val serviceChassisVersion = "1.0.4-SNAPSHOT"
 val macroParadiseVersion = "2.1.0"
 val guavaVersion = "20.0"
 
