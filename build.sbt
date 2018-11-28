@@ -38,9 +38,9 @@ libraryDependencies ++= {
     "com.google.guava" % "guava" % guavaVersion,
 
     // Test Dependencies
-    "com.typesafe.akka" %% "akka-http-testkit" % akkaHttpVersion % "test",
-    "org.mockito" % "mockito-core" % mockitoVersion % "test",
-    "org.scalatest" %% "scalatest" % scalatestVersion % "test"
+    "com.typesafe.akka" %% "akka-http-testkit" % akkaHttpVersion % "it,test",
+    "org.mockito" % "mockito-core" % mockitoVersion % "it,test",
+    "org.scalatest" %% "scalatest" % scalatestVersion % "it,test"
   )
 }
 
@@ -54,5 +54,8 @@ buildInfoOptions += BuildInfoOption.BuildTime
 resolvers += "Service Chassis Snapshots" at "https://s3-ap-southeast-2.amazonaws.com/maven.allawala.com/service-chassis/snapshots"
 resolvers += "Service Chassis Releases" at "https://s3-ap-southeast-2.amazonaws.com/maven.allawala.com/service-chassis/releases"
 
+lazy val root = (project in file(".")).configs(IntegrationTest).settings(Defaults.itSettings)
+
 fork in run := true
 parallelExecution in Test := false
+parallelExecution in IntegrationTest := false

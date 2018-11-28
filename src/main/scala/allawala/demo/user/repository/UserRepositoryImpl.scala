@@ -3,6 +3,10 @@ package allawala.demo.user.repository
 import allawala.demo.user.entity.UserEntity
 import scala.collection.mutable.{Map => MutMap}
 
+/*
+  Normally you would probably want to catch the db specific exceptions and translate them into domain exceptions and return an Either[,] or Future[Either[,]]
+  Here throwing exceptions to show that if you dont cater for them, they would still be handled and converted to the standard error payload before
+ */
 class UserRepositoryImpl extends UserRepository {
   private val users: MutMap[String, UserEntity] = MutMap.empty
 
@@ -35,7 +39,9 @@ class UserRepositoryImpl extends UserRepository {
 
   override def getByEmail(email: String): UserEntity = users(email)
 
-  override def getByEmailOpt(email: String): Option[UserEntity] = users.get(email)
+  override def getByEmailOpt(email: String): Option[UserEntity] = {
+    users.get(email)
+  }
 
   override def getOpt(uuid: String): Option[UserEntity] = users.values.find(_.uuid == uuid)
 

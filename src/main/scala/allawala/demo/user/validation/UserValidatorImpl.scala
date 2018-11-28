@@ -1,7 +1,7 @@
 package allawala.demo.user.validation
 
 import allawala.ValidationResult
-import allawala.demo.user.model.{Login, Registration}
+import allawala.demo.user.model.{Login, Registration, UserUpdate}
 import cats.implicits._
 
 class UserValidatorImpl extends UserValidator {
@@ -25,5 +25,15 @@ class UserValidatorImpl extends UserValidator {
     ) mapN {
       case _ => login
     }
+  }
+
+  override def validateUpdate(userUpdate: UserUpdate): ValidationResult[UserUpdate] = {
+    (
+      notBlank("firstName", userUpdate.firstName),
+      notBlank("lastName", userUpdate.lastName)
+    ) mapN {
+      case _ => userUpdate
+    }
+
   }
 }
